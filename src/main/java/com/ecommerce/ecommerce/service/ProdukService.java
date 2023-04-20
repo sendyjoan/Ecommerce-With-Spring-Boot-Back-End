@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 import com.ecommerce.ecommerce.entity.Produk;
 import com.ecommerce.ecommerce.exception.BadRequestException;
-import com.ecommerce.ecommerce.exception.ResourceNotfoundException;
+import com.ecommerce.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.ecommerce.repository.KategoriRepository;
 import com.ecommerce.ecommerce.repository.ProdukRepository;
 
@@ -28,7 +28,7 @@ public class ProdukService {
 
     public Produk findById(String id) {
         return produkRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotfoundException("Produk dengan id " + id + " tidak ditemukan"));
+            .orElseThrow(() -> new ResourceNotFoundException("Produk dengan id " + id + " tidak ditemukan"));
     }
 
     public Produk create(Produk produk) {

@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 
 import com.ecommerce.ecommerce.entity.Pengguna;
 import com.ecommerce.ecommerce.exception.BadRequestException;
-import com.ecommerce.ecommerce.exception.ResourceNotfoundException;
+import com.ecommerce.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.ecommerce.repository.PenggunaRepository;
 
 @Service
@@ -16,7 +16,7 @@ public class PenggunaService {
     private PenggunaRepository penggunaRepository;
 
     public Pengguna findById(String id) {
-        return penggunaRepository.findById(id).orElseThrow(() -> new ResourceNotfoundException("Pengguna dengan id " + id + " tidak ditemukan"));
+        return penggunaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Pengguna dengan id " + id + " tidak ditemukan"));
     }
 
     public List<Pengguna> findAll() {

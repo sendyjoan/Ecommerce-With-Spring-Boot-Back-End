@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.ecommerce.entity.Kategori;
-import com.ecommerce.ecommerce.exception.ResourceNotfoundException;
+import com.ecommerce.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.ecommerce.repository.KategoriRepository;
 
 @Service
@@ -16,7 +16,7 @@ public class KategoriService {
     private KategoriRepository kategoriRepository;
 
     public Kategori findById(String id) {
-        return kategoriRepository.findById(id).orElseThrow(() -> new ResourceNotfoundException("Kategori dengan id " + id + " tidak ditemukan"));
+        return kategoriRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Kategori dengan id " + id + " tidak ditemukan"));
     }
 
     public List<Kategori> findAll() {
